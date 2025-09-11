@@ -1,2 +1,2 @@
 # iris
-IRIS (Intelligent Retinal Imaging System) es una innovadora plataforma de diagnóstico oftalmológico basada en inteligencia artificial, diseñada para optimizar la detección y el manejo de enfermedades oculares prevalentes.
+IRIS (Intelligent Retinal Imaging System) es una innovadora plataforma de diagnóstico oftalmológico basada en inteligencia artificial, diseñada para optimizar la detección y el manejo de enfermedades oculares prevalentes. Mediante el análisis automatizado de imágenes retinianas de alta resolución, IRIS proporciona a los profesionales de la salud visual una herramienta precisa y eficiente para la identificación temprana de patologías como retinopatía diabética, glaucoma y degeneración macular relacionada con la edad (DMAE), entre otras.
