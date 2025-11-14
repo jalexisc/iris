@@ -26,7 +26,8 @@ $b = service("bootstrap");
 $f = service("forms",array("lang" => "Iris_Episodes."));
 $server = service("server");
 //[models]--------------------------------------------------------------------------------------------------------------
-//$model = model("App\Modules\Iris\Models\Iris_Episodes");
+$mepisodes = model("App\Modules\Iris\Models\Iris_Episodes");
+$mpatients = model("App\Modules\Iris\Models\Iris_Patients");
 //[vars]----------------------------------------------------------------------------------------------------------------
 /**
 * @var object $authentication Authentication service from the ModuleController.
@@ -52,10 +53,33 @@ $r["created_at"] = $f->get_Value("created_at");
 $r["updated_at"] = $f->get_Value("updated_at");
 $r["deleted_at"] = $f->get_Value("deleted_at");
 $back=$f->get_Value("back",$server->get_Referer());
+
+$patient = false;
+if (!empty($oid)) {
+    $patient = $mpatients->getPatient($oid);
+    if (is_array($patient)) {
+        $r["patient"] = $patient["patient"];
+        $patient = true;
+    }
+}
+
+
+$patients = array(
+    array("value" => "", "label" => "Seleccione un paciente"),
+);
+$patients = array_merge($patients, $mpatients->getSelectData());
+
+
 //[fields]----------------------------------------------------------------------------------------------------------------
 $f->add_HiddenField("back",$back);
 $f->fields["episode"] = $f->get_FieldText("episode", array("value" => $r["episode"],"proportion"=>"col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12","readonly"=>true));
-$f->fields["patient"] = $f->get_FieldText("patient", array("value" => $r["patient"],"proportion"=>"col-md-8 col-sm-12 col-12"));
+if (!$patient) {
+    $f->fields["patient"] = $f->get_FieldSelect("patient", array("selected" => $r["patient"], "data" => $patients, "proportion" => "col-md-8 col-sm-12 col-12"));
+} else {
+    $f->fields["patient"] = $f->get_FieldText("patient", array("value" => $r["patient"], "proportion" => "col-md-8 col-sm-12 col-12", "readonly" => true));
+}
+
+
 $f->fields["start_date"] = $f->get_FieldDate("start_date", array("value" => $r["start_date"],"proportion"=>"col-md-6 col-sm-12 col-12"));
 $f->fields["end_date"] = $f->get_FieldDate("end_date", array("value" => $r["end_date"],"proportion"=>"col-md-6 col-sm-12 col-12"));
 $f->fields["reason_for_visit"] = $f->get_FieldTextArea("reason_for_visit", array("value" => $r["reason_for_visit"],"proportion"=>"col-12"));
@@ -75,8 +99,8 @@ $f->groups["g4"]=$f->get_Group(array("legend"=>"","fields"=>($f->fields["general
 $f->groups["gy"] =$f->get_GroupSeparator();
 $f->groups["gz"] = $f->get_Buttons(array("fields"=>$f->fields["submit"].$f->fields["cancel"]));
 //[build]---------------------------------------------------------------------------------------------------------------
-$card = $b->get_Card("create", array(
-		 "title" => lang("Iris_Episodes.create-title"),
+$card = $b->get_Card2("create", array(
+    "header-title" => lang("Iris_Episodes.create-title"),
 		 "content" =>$f,
 		 "header-back" =>$back
 ));

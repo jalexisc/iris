@@ -47,6 +47,7 @@ $breadcrumb = $component . '\breadcrumb';
 $validator = $component . '\validator';
 $form = $component . '\form';
 $files= $component . '\files';
+$diagnostics = $component . '\diagnostics';
 $deny = $component . '\deny';
 //[build]---------------------------------------------------------------------------------------------------------------
 if ($plural || $authority) {
@@ -55,10 +56,10 @@ if ($plural || $authority) {
     } else {
         $vform=view($form, $data);
         $vfiles=view($files, $data);
-
+        $vdiagnostics = view($diagnostics, $data);
         $json = array(
             'breadcrumb' => view($breadcrumb, $data),
-            'main' => $vform.$vfiles,
+            'main' => $vform . $vdiagnostics . $vfiles,
             'right' => ""
         );
     }

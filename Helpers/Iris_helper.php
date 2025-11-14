@@ -46,6 +46,60 @@ if (!function_exists("generate_iris_permissions")) {
             "iris-images-edit-all",
             "iris-images-delete",
             "iris-images-delete-all",
+            //[Diagnostics]----------------------------------------------------------------------------------------
+            "iris-diagnostics-access",
+            "iris-diagnostics-view",
+            "iris-diagnostics-view-all",
+            "iris-diagnostics-create",
+            "iris-diagnostics-edit",
+            "iris-diagnostics-edit-all",
+            "iris-diagnostics-delete",
+            "iris-diagnostics-delete-all",
+            //[Settings]----------------------------------------------------------------------------------------
+            "iris-settings-access",
+            "iris-settings-view",
+            "iris-settings-view-all",
+            "iris-settings-create",
+            "iris-settings-edit",
+            "iris-settings-edit-all",
+            "iris-settings-delete",
+            "iris-settings-delete-all",
+            //[Modalities]----------------------------------------------------------------------------------------
+            "iris-modalities-access",
+            "iris-modalities-view",
+            "iris-modalities-view-all",
+            "iris-modalities-create",
+            "iris-modalities-edit",
+            "iris-modalities-edit-all",
+            "iris-modalities-delete",
+            "iris-modalities-delete-all",
+            //[Procedures]----------------------------------------------------------------------------------------
+            "iris-procedures-access",
+            "iris-procedures-view",
+            "iris-procedures-view-all",
+            "iris-procedures-create",
+            "iris-procedures-edit",
+            "iris-procedures-edit-all",
+            "iris-procedures-delete",
+            "iris-procedures-delete-all",
+            //[Categories]----------------------------------------------------------------------------------------
+            "iris-categories-access",
+            "iris-categories-view",
+            "iris-categories-view-all",
+            "iris-categories-create",
+            "iris-categories-edit",
+            "iris-categories-edit-all",
+            "iris-categories-delete",
+            "iris-categories-delete-all",
+            //[Mstudies]----------------------------------------------------------------------------------------
+            "iris-mstudies-access",
+            "iris-mstudies-view",
+            "iris-mstudies-view-all",
+            "iris-mstudies-create",
+            "iris-mstudies-edit",
+            "iris-mstudies-edit-all",
+            "iris-mstudies-delete",
+            "iris-mstudies-delete-all",
         );
         generate_permissions($permissions, "iris");
     }
@@ -53,20 +107,53 @@ if (!function_exists("generate_iris_permissions")) {
 }
 
 if (!function_exists("get_iris_sidebar")) {
-    function get_iris_sidebar($active_url = false): string
+    function get_iris_sidebar($active_url = false): array
     {
-        $bootstrap = service("bootstrap");
         $lpk = safe_strtolower(pk());
-        $options = array(
-            "home" => array("text" => lang("App.Home"), "href" => "/iris/", "svg" => "home.svg"),
-            "episodes" => array("text" => "Episodios Clínicos", "href" => "/iris/episodes/list/" . lpk(), "icon" => ICON_TOOLS, "permission" => "iris-access"),
-            "patients" => array("text" => "Pacientes", "href" => "/iris/patients/list/" . lpk(), "icon" => ICON_TOOLS, "permission" => "iris-access"),
-            "studies" => array("text" => "Estudios Diagnósticos", "href" => "/iris/studies/list/" . lpk(), "icon" => ICON_TOOLS, "permission" => "iris-access"),
-            "settings" => array("text" => lang("App.Settings"), "href" => "/iris/settings/home/" . lpk(), "icon" => ICON_TOOLS, "permission" => "iris-access"),
-        );
-        $o = get_application_custom_sidebar($options, $active_url);
-        $return = $bootstrap->get_NavPills($o, $active_url);
-        return ($return);
+        $items = [
+            "home" => [
+                "text" => lang("App.Home"),
+                "href" => "/iris/",
+                "svg" => "home.svg"
+            ],
+            "episodes" => [
+                "text" => "Episodios Clínicos",
+                "href" => "/iris/episodes/list/{$lpk}",
+                "icon" => ICON_TOOLS,
+                "permission" => "iris-episodes-access"
+            ],
+            "patients" => [
+                "text" => "Pacientes",
+                "href" => "/iris/patients/list/{$lpk}",
+                "icon" => ICON_TOOLS,
+                "permission" => "iris-patients-access"
+            ],
+            "studies" => [
+                "text" => "Estudios Diagnósticos",
+                "href" => "#",
+                "icon" => ICON_TOOLS,
+                "permission" => "iris-studies-access"
+            ],
+            "settings" => [
+                "text" => lang("App.Settings"),
+                "href" => "/iris/settings/home/{$lpk}",
+                "icon" => ICON_TOOLS,
+                "permission" => "iris-access"
+            ],
+        ];
+
+        $final_items = [];
+        foreach ($items as $key => $item) {
+            if (isset($item['permission'])) {
+                if (safe_has_permission($item['permission'])) {
+                    $final_items[$key] = $item;
+                }
+            } else {
+                $final_items[$key] = $item;
+            }
+        }
+        $left = ['sidebar_title' => 'Componentes', 'sidebar_menu_items' => $final_items];
+        return ($left);
     }
 }
 

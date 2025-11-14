@@ -1,30 +1,5 @@
 <?php
 
-/**
- * █ ---------------------------------------------------------------------------------------------------------------------
- * █ ░FRAMEWORK                                                                    2025-04-09 16:38:38
- * █ ░█▀▀█ █▀▀█ █▀▀▄ █▀▀ ░█─░█ ─▀─ █▀▀▀ █▀▀▀ █▀▀ [App\Modules\Iris\Home\breadcrumb.php]
- * █ ░█─── █──█ █──█ █▀▀ ░█▀▀█ ▀█▀ █─▀█ █─▀█ ▀▀█ Copyright 2025 - CloudEngine S.A.S., Inc. <admin@cgine.com>
- * █ ░█▄▄█ ▀▀▀▀ ▀▀▀─ ▀▀▀ ░█─░█ ▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀ Para obtener información completa sobre derechos de autor y licencia,
- * █                                                                                         consulte la LICENCIA archivo que se distribuyó con este código fuente.
- * █ ---------------------------------------------------------------------------------------------------------------------
- * █ EL SOFTWARE SE PROPORCIONA -TAL CUAL-, SIN GARANTÍA DE NINGÚN TIPO, EXPRESA O
- * █ IMPLÍCITA, INCLUYENDO PERO NO LIMITADO A LAS GARANTÍAS DE COMERCIABILIDAD,
- * █ APTITUD PARA UN PROPÓSITO PARTICULAR Y NO INFRACCIÓN. EN NINGÚN CASO SERÁ
- * █ LOS AUTORES O TITULARES DE LOS DERECHOS DE AUTOR SERÁN RESPONSABLES DE CUALQUIER
- * █ RECLAMO, DAÑOS U OTROS RESPONSABILIDAD, YA SEA EN UNA ACCIÓN DE CONTRATO,
- * █ AGRAVIO O DE OTRO MODO, QUE SURJA DESDE, FUERA O EN RELACIÓN CON EL SOFTWARE
- * █ O EL USO U OTROS NEGOCIACIONES EN EL SOFTWARE.
- * █ ---------------------------------------------------------------------------------------------------------------------
- * █ @Author Jose Alexis Correa Valencia <jalexiscv@gmail.com>
- * █ @link https://www.codehiggs.com
- * █ @Version 1.5.0 @since PHP 7, PHP 8
- * █ ---------------------------------------------------------------------------------------------------------------------
- * █ Datos recibidos desde el controlador - @ModuleController
- * █ ---------------------------------------------------------------------------------------------------------------------
- * █ @authentication, @request, @dates, @parent, @component, @view, @oid, @views, @prefix
- * █ ---------------------------------------------------------------------------------------------------------------------
- **/
 return [
     'module' => 'Intelligent Retinal Imaging System  IRIS ',
     'intro-1' => 'IRIS (Intelligent Retinal Imaging System) es una innovadora plataforma de diagnóstico oftalmológico basada en inteligencia artificial, diseñada para optimizar la detección y el manejo de enfermedades oculares prevalentes. Mediante el análisis automatizado de imágenes retinianas de alta resolución, IRIS proporciona a los profesionales de la salud visual una herramienta precisa y eficiente para la identificación temprana de patologías como retinopatía diabética, glaucoma y degeneración macular relacionada con la edad (DMAE), entre otras.',
@@ -34,7 +9,10 @@ return [
     "Study"=>"Estudio",
     "Study_Date"=>"Fecha del estudio",
     "Study_Type"=>"Tipo de estudio",
+    "Studies" => "Estudios",
+    "Modalities" => "Modalidades",
     "Study_Status"=>"Estado",
+    "Details" => "Detalles",
     "Diabetic Retinopathy Screening" => "Evaluación de daño en la retina causado por la diabetes",
     "Age-related Macular Degeneration (AMD) Study" => "Estudio para detectar o monitorear degeneración macular relacionada con la edad",
     "Glaucoma Screening" => "Estudio para evaluar el nervio óptico y detectar indicios de glaucoma",
@@ -70,5 +48,74 @@ return [
     "CANCELLED"=>"Cancelado",
     "NEEDS_RESCAN"=>"Necesita reescaneo",
     "ARCHIVED"=>"Archivado",
+    "patient" => "Paciente",
+    "fhir_id" => "ID FHIR",
+    "active" => "Activo",
+    "document_type" => "Tipo de Documento",
+    "document_number" => "Número de Documento",
+    "document_issued_place" => "Lugar de Expedición",
+    "first_name" => "Primer Nombre",
+    "middle_name" => "Segundo Nombre",
+    "first_surname" => "Primer Apellido",
+    "second_surname" => "Segundo Apellido",
+    "full_name" => "Nombre Completo",
+    "fullname" => "Nombre Completo",
+    "gender" => "Género",
+    "birth_date" => "Fecha de Nacimiento",
+    "birth_place" => "Lugar de Nacimiento",
+    "marital_status" => "Estado Civil",
+    "primary_phone" => "Teléfono Principal",
+    "secondary_phone" => "Teléfono Secundario",
+    "email" => "Correo Electrónico",
+    "full_address" => "Dirección Completa",
+    "neighborhood" => "Barrio",
+    "city" => "Ciudad",
+    "state" => "Departamento/Estado",
+    "postal_code" => "Código Postal",
+    "country" => "País",
+    "residence_area" => "Área de Residencia",
+    "socioeconomic_stratum" => "Estrato Socioeconómico",
+    "emergency_contact_name" => "Nombre Contacto de Emergencia",
+    "emergency_contact_relationship" => "Parentesco Contacto de Emergencia",
+    "emergency_contact_phone" => "Teléfono Contacto de Emergencia",
+    "health_insurance" => "Aseguradora de Salud",
+    "health_regime" => "Régimen de Salud",
+    "affiliation_type" => "Tipo de Afiliación",
+    "ethnicity" => "Etnia",
+    "special_population" => "Población Especial",
+    "has_diabetes" => "Tiene Diabetes",
+    "has_hypertension" => "Tiene Hipertensión",
+    "family_history_glaucoma" => "Antecedentes Familiares de Glaucoma",
+    "family_history_diabetes" => "Antecedentes Familiares de Diabetes",
+    "family_history_retinopathy" => "Antecedentes Familiares de Retinopatía",
+    "previous_eye_surgeries" => "Cirugías Oculares Previas",
+    "blood_type" => "Tipo de Sangre",
+    "allergies" => "Alergias",
+    "current_medications" => "Medicamentos Actuales",
+    "primary_language" => "Idioma Principal",
+    "data_consent" => "Consentimiento de Datos",
+    "accepts_communications" => "Acepta Comunicaciones",
+    "profile_photo" => "Foto de Perfil",
+    "observations" => "Observaciones",
+    "created_by" => "Creado Por",
+    "updated_by" => "Actualizado Por",
+    "deleted_by" => "Eliminado Por",
+    "created_at" => "Fecha de Creación",
+    "updated_at" => "Fecha de Actualización",
+    "deleted_at" => "Fecha de Eliminación",
+    "Options" => "Opciones",
+    "View" => "Ver",
+    "Edit" => "Editar",
+    "Delete" => "Eliminar",
+    "Modality" => "Modalidad",
+    "Code" => "Código",
+    "Name" => "Nombre",
+    "Procedure" => "Procedimiento",
+    "Procedures" => "Procedimientos",
+    "Categories" => "Categorias",
+    "Category" => "Categoria",
+    "Mstudy" => "Estudio Medico",
+    "Loinc_code" => "LOINC",
+    "Short_name" => "Nombre Corto",
 ];
 ?>

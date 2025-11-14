@@ -54,6 +54,7 @@ if ($plural || $authority) {
         $json = array(
             'breadcrumb' => view($breadcrumb, $data),
             'main' => view($validator, $data),
+            'main_template' => "c9c3",
             'right' => ""
         );
     } else {
@@ -62,6 +63,7 @@ if ($plural || $authority) {
         $json = array(
             'breadcrumb' => view($breadcrumb, $data),
             'main' => $vf . $vs,
+            'main_template' => "c9c3",
             'right' => ""
         );
     }

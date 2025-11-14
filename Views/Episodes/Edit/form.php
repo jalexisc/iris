@@ -30,7 +30,8 @@ $authentication =service('authentication');
 $server = service("server");
 $f = service("forms",array("lang" => "Iris_Episodes."));
 //[models]--------------------------------------------------------------------------------------------------------------
-//$model = model("App\Modules\Iris\Models\Iris_Episodes");
+$mepisodes = model("App\Modules\Iris\Models\Iris_Episodes");
+$mpatients = model("App\Modules\Iris\Models\Iris_Patients");
 //[vars]----------------------------------------------------------------------------------------------------------------
 /**
 * @var object $authentication Authentication service from the ModuleController.
@@ -57,10 +58,14 @@ $r["created_at"] = $f->get_Value("created_at",$row["created_at"]);
 $r["updated_at"] = $f->get_Value("updated_at",$row["updated_at"]);
 $r["deleted_at"] = $f->get_Value("deleted_at",$row["deleted_at"]);
 $back=$f->get_Value("back",$server->get_Referer());
+$patients = array(
+    array("value" => "", "label" => "Seleccione un paciente"),
+);
+$patients = array_merge($patients, $mpatients->getSelectData());
 //[fields]----------------------------------------------------------------------------------------------------------------
 $f->add_HiddenField("back",$back);
 $f->fields["episode"] = $f->get_FieldText("episode", array("value" => $r["episode"],"proportion"=>"col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12","readonly"=>true));
-$f->fields["patient"] = $f->get_FieldText("patient", array("value" => $r["patient"],"proportion"=>"col-md-8 col-sm-12 col-12"));
+$f->fields["patient"] = $f->get_FieldSelect("patient", array("selected" => $r["patient"], "data" => $patients, "proportion" => "col-md-8 col-sm-12 col-12"));
 $f->fields["start_date"] = $f->get_FieldDate("start_date", array("value" => $r["start_date"],"proportion"=>"col-md-6 col-sm-12 col-12"));
 $f->fields["end_date"] = $f->get_FieldDate("end_date", array("value" => $r["end_date"],"proportion"=>"col-md-6 col-sm-12 col-12"));
 $f->fields["reason_for_visit"] = $f->get_FieldTextArea("reason_for_visit", array("value" => $r["reason_for_visit"],"proportion"=>"col-12"));

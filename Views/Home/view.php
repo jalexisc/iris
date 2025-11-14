@@ -35,9 +35,9 @@ generate_iris_permissions($module);
 $bootstrap = service("bootstrap");
 $server = service("server");
 	$version = round(($server->get_DirectorySize(APPPATH . 'Modules/Iris') / 102400), 6);
-$card = $bootstrap->get_Card("card-view-Iris", array(
+$card = $bootstrap->get_Card2("card-view-Iris", array(
 		"class" => "mb-3",
-		"title" => lang("Iris.module") . "<span class='text-muted'>v{$version}</span>",
+    "header-title" => lang("Iris.module") . "<span class='text-muted'>v{$version}</span>",
 		"header-back" => "/",
 		"image" => "/themes/assets/images/header/iris.png",
 		"image-class" => "img-fluid p-3",
@@ -47,8 +47,10 @@ echo($card);
 
 if ($authentication->get_LoggedIn() && $authentication->has_Permission("iris-access")) {
 		$shortcuts = $bootstrap->get_Shortcuts(array("id" => "shortcuts-panel"));
-		$shortcuts->add($bootstrap->get_Shortcut(array("href" => "/#" . lpk(), "icon" => ICON_TOOLS, "value" => "Tool #1", "description" => "Herramienta")));
-		$shortcuts->add($bootstrap->get_Shortcut(array("href" => "/#" . lpk(), "icon" => ICON_TOOLS, "value" => "Tool #2", "description" => "Herramienta")));
-		echo($shortcuts);
+    $shortcuts->add($bootstrap->get_Shortcut(array("href" => "/iris/patients/list/" . lpk(), "icon" => ICON_TOOLS, "value" => "Pacientes", "description" => "Listado")));
+    $shortcuts->add($bootstrap->get_Shortcut(array("href" => "/iris/episodes/list/" . lpk(), "icon" => ICON_TOOLS, "value" => "Episodios ", "description" => "Clínicos")));
+    $shortcuts->add($bootstrap->get_Shortcut(array("href" => "/iris/studies/list/" . lpk(), "icon" => ICON_TOOLS, "value" => "Estudios ", "description" => "Diagnósticos")));
+    $shortcuts->add($bootstrap->get_Shortcut(array("href" => "/iris/files/list/" . lpk(), "icon" => ICON_TOOLS, "value" => "Archivos ", "description" => "Clínicos")));
+    echo($shortcuts);
 }
 ?>

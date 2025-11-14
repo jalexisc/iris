@@ -45,6 +45,7 @@ $json = array(
 		'breadcrumb' => view($breadcrumb, $data),
 		'main' => view($home, $data),
 		'right' => "",
+    "main_template" => "c9c3",
 );
 echo(json_encode($json));
 ?>

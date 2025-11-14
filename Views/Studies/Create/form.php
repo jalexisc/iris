@@ -27,6 +27,8 @@ $f = service("forms",array("lang" => "Iris_Studies."));
 $server = service("server");
 //[models]--------------------------------------------------------------------------------------------------------------
 //$model = model("App\Modules\Iris\Models\Iris_Studies");
+$mmstudies = model('App\Modules\Iris\Models\Iris_Mstudies');
+
 //[vars]----------------------------------------------------------------------------------------------------------------
 /**
 * @var object $authentication Authentication service from the ModuleController.
@@ -56,7 +58,15 @@ $r["updated_at"] = $f->get_Value("updated_at");
 $r["deleted_at"] = $f->get_Value("deleted_at");
 $back=$f->get_Value("back",$server->get_Referer());
 
-$studies = [
+
+$studies = array(
+    array("value" => "", "label" => "Seleccione uno...")
+);
+
+$studies = array_merge($studies, $mmstudies->getSelectData());
+
+
+$studies2 = [
     ["label" => lang("Iris.Diabetic Retinopathy Screening"), "value" => "DIABETIC_RETINOPATHY"],
     ["label" => lang("Iris.Age-related Macular Degeneration (AMD) Study"), "value" => "AMD"],
     ["label" => lang("Iris.Glaucoma Screening"), "value" => "GLAUCOMA"],

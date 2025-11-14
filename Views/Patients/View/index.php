@@ -2,7 +2,7 @@
 
 /**
 * █ ---------------------------------------------------------------------------------------------------------------------
-* █ ░FRAMEWORK                                  2025-04-10 06:51:35
+ * █ ░FRAMEWORK                                  2025-09-14 22:42:23
 * █ ░█▀▀█ █▀▀█ █▀▀▄ █▀▀ ░█─░█ ─▀─ █▀▀▀ █▀▀▀ █▀▀ [App\Modules\Iris\Views\Patients\Editor\index.php]
 * █ ░█─── █──█ █──█ █▀▀ ░█▀▀█ ▀█▀ █─▀█ █─▀█ ▀▀█ Copyright 2023 - CloudEngine S.A.S., Inc. <admin@cgine.com>
 * █ ░█▄▄█ ▀▀▀▀ ▀▀▀─ ▀▀▀ ░█─░█ ▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀ Para obtener información completa sobre derechos de autor y licencia,
@@ -45,17 +45,30 @@ $authority= ($singular&&$author)?true:false;
 $submited = $request->getPost("submited");
 $breadcrumb = $component . '\breadcrumb';
 $validator = $component . '\validator';
-$form = $component . '\form';
+$form = $component . '\tabs';
 $deny = $component . '\deny';
 //[build]---------------------------------------------------------------------------------------------------------------
 if ($plural||$authority) {
 		if (!empty($submited)) {
-				$json = array('breadcrumb' => view($breadcrumb, $data), 'main' => view($validator, $data), 'right' => "");
+            $json = array(
+                'breadcrumb' => view($breadcrumb, $data),
+                'main' => view($validator, $data),
+                'right' => ""
+            );
 		} else {
-				$json = array('breadcrumb' => view($breadcrumb, $data), 'main' => view($form, $data), 'right' => "");
+            $json = array(
+                'breadcrumb' => view($breadcrumb, $data),
+                'main' => view($form, $data),
+                'main_template' => 'c9c3',
+                'right' => ""
+            );
 		}
 } else {
-		$json = array('breadcrumb' => view($breadcrumb, $data), 'main' => view($deny, $data), 'right' => "");
+    $json = array(
+        'breadcrumb' => view($breadcrumb, $data),
+        'main' => view($deny, $data),
+        'right' => ""
+    );
 }
 echo(json_encode($json));
 ?>
