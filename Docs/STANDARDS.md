@@ -13,7 +13,9 @@ Para facilitar la comprensión y el mantenimiento, la documentación de los est�
 *   **[Pacientes (ADT)](Standards/PATIENTS.md)**: Gestión de identidad demográfica y flujos de admisión/actualización (Segmento PID).
 *   **[Profesionales (Staff)](Standards/PROFESSIONALS.md)**: Gestión de perfiles médicos (Segmentos STF, PRA).
 *   **[Especialidades](Standards/SPECIALTIES.md)**: Clasificación de experticia clínica (PRA-5).
+*   **[Asignaciones](Standards/ASSIGNMENTS.md)**: Acreditación de especialidades a profesionales (Relación N:M).
 *   **[Grupos de Práctica](Standards/GROUPS.md)**: Organización de equipos médicos (PRA-2).
+*   **[Membresías](Standards/MEMBERSHIPS.md)**: Afiliación de profesionales a grupos (Relación N:M).
 *   **[Episodios Clínicos](Standards/EPISODES.md)**: Manejo de visitas y encuentros (Segmento PV1).
 *   **[Órdenes y Resultados](Standards/ORDERS_RESULTS.md)**: Flujos de solicitud de estudios y reporte de diagnósticos (Mensajes ORM y ORU, Segmentos OBR, OBX).
 

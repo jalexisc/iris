@@ -48,24 +48,7 @@ CREATE TABLE `iris_specialties` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Catálogo maestro de especialidades médicas';
 ```
 
-### 2. Asignación a Profesionales (`iris_assignments`)
-Vincula a los profesionales con una o más especialidades del catálogo.
+### 2. Asignación a Profesionales
+La vinculación entre profesionales y especialidades se gestiona a través de la tabla `iris_assignments`. Para más detalles sobre competencias y estructura, consulte:
 
-```sql
-CREATE TABLE `iris_assignments` (
-  `assignment` VARCHAR(13) NOT NULL COMMENT 'ID único de la asignación',
-  `professional` VARCHAR(13) NOT NULL COMMENT 'FK: Profesional',
-  `specialty` VARCHAR(13) NOT NULL COMMENT 'FK: Especialidad',
-  `is_primary` TINYINT(1) DEFAULT 0 COMMENT 'Indica si es la especialidad principal',
-  
-  -- Auditoría
-  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `deleted_at` DATETIME DEFAULT NULL,
-  
-  PRIMARY KEY (`assignment`),
-  CONSTRAINT `fk_assign_prof` FOREIGN KEY (`professional`) REFERENCES `iris_professionals` (`professional`) ON DELETE CASCADE,
-  CONSTRAINT `fk_assign_spec` FOREIGN KEY (`specialty`) REFERENCES `iris_specialties` (`specialty`) ON DELETE CASCADE,
-  UNIQUE KEY `uk_prof_spec` (`professional`, `specialty`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Relación N:M entre Profesionales y Especialidades';
-```
+*   **[Estándares de Asignaciones](ASSIGNMENTS.md)**
