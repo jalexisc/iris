@@ -15,3 +15,4 @@
 - [x] Renombrar tabla de grupos a `iris_memberships` <!-- id: 2 -->
 - [x] Extraer documentación de Membresías a `MEMBERSHIPS.md` <!-- id: 3 -->
 - [x] Extraer documentación de Asignaciones a `ASSIGNMENTS.md` <!-- id: 4 -->
+- [x] Mejorar y ampliar `README.md` <!-- id: 5 -->
