@@ -64,10 +64,10 @@ Toda la documentación técnica y funcional se encuentra centralizada en el dire
 
 ## 🛠 Stack Tecnológico
 
-*   **Backend**: PHP 8.x (CodeIgniter 4 Modules)
+*   **Backend**: PHP 8.x (Higgs7 Framework)
 *   **Base de Datos**: MySQL 8.0 (InnoDB)
 *   **AI/ML**: Python Microservices (TensorFlow/PyTorch) - *Integración vía API*
-*   **Frontend**: HTML5 / JS (Vistas nativas de CI4)
+*   **Frontend**: HTML5 / JS (Vistas nativas de Higgs7)
 
 ---
 
