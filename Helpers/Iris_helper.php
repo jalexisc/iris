@@ -106,6 +106,49 @@ if (!function_exists("generate_iris_permissions")) {
 
 }
 
+if (!function_exists("get_iris_sidebar2")) {
+    function get_iris_sidebar2($active_url = false)
+    {
+        $bootstrap = service("bootstrap");
+        $lpk = safe_strtolower(pk());
+        $options = [
+            "home" => [
+                "text" => lang("App.Home"),
+                "href" => "/iris/",
+                "svg" => "home.svg"
+            ],
+            "episodes" => [
+                "text" => "Episodios Clínicos",
+                "href" => "/iris/episodes/list/{$lpk}",
+                "icon" => ICON_TOOLS,
+                "permission" => "iris-episodes-access"
+            ],
+            "patients" => [
+                "text" => "Pacientes",
+                "href" => "/iris/patients/list/{$lpk}",
+                "icon" => ICON_TOOLS,
+                "permission" => "iris-patients-access"
+            ],
+            "studies" => [
+                "text" => "Estudios Diagnósticos",
+                "href" => "#",
+                "icon" => ICON_TOOLS,
+                "permission" => "iris-studies-access"
+            ],
+            "settings" => [
+                "text" => lang("App.Settings"),
+                "href" => "/iris/settings/home/{$lpk}",
+                "icon" => ICON_TOOLS,
+                "permission" => "iris-access"
+            ],
+        ];
+        $o = get_application_custom_sidebar($options, $active_url);
+        $return = $bootstrap->get_NavPillsGamma($o, $active_url);
+        return ($return);
+    }
+}
+
+
 if (!function_exists("get_iris_sidebar")) {
     function get_iris_sidebar($active_url = false): array
     {

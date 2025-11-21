@@ -11,7 +11,9 @@ La adopción de HL7 garantiza la **interoperabilidad**, integridad y estandariza
 Para facilitar la comprensión y el mantenimiento, la documentación de los estándares se ha desglosado en los siguientes componentes:
 
 *   **[Pacientes (ADT)](Standards/PATIENTS.md)**: Gestión de identidad demográfica y flujos de admisión/actualización (Segmento PID).
-*   **[Profesionales (Staff)](Standards/PROFESSIONALS.md)**: Gestión de perfiles médicos, especialidades y privilegios (Segmentos STF, PRA).
+*   **[Profesionales (Staff)](Standards/PROFESSIONALS.md)**: Gestión de perfiles médicos (Segmentos STF, PRA).
+*   **[Especialidades](Standards/SPECIALTIES.md)**: Clasificación de experticia clínica (PRA-5).
+*   **[Grupos de Práctica](Standards/GROUPS.md)**: Organización de equipos médicos (PRA-2).
 *   **[Episodios Clínicos](Standards/EPISODES.md)**: Manejo de visitas y encuentros (Segmento PV1).
 *   **[Órdenes y Resultados](Standards/ORDERS_RESULTS.md)**: Flujos de solicitud de estudios y reporte de diagnósticos (Mensajes ORM y ORU, Segmentos OBR, OBX).
 

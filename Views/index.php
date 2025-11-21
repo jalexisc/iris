@@ -90,10 +90,10 @@ $json = view($uri, $data);
 //[build]---------------------------------------------------------------------------------------------------------------
 $assign = array();
 $assign['theme'] = "Higgs";
-$assign['main_template'] = safe_json($json, 'main_template', 'c9c3');
+$assign['main_template'] = safe_json($json, 'main_template', "c9c3");
 $assign['breadcrumb'] = safe_json($json, 'breadcrumb');
 $assign['main'] = safe_json($json, 'main');
-$assign['left'] = get_iris_sidebar();
+$assign['left'] = get_iris_sidebar2();
 $assign['right'] = safe_json($json, 'right') . get_application_copyright();
 $assign['logo_portrait'] = get_logo("logo_portrait");
 $assign['logo_landscape'] = get_logo("logo_landscape");
@@ -112,12 +112,12 @@ $assign['article'] = safe_json($json, 'article');
 $assign['next'] = safe_json($json, 'next');
 $assign['previus'] = safe_json($json, 'previus');
 $assign['messenger'] = true;
-$assign['messenger_users'] = "";
+$assign['messenger_users'] = false;
 $benchmark->stop('time');
+$assign['modals'] = safe_module_modal();
 $assign['benchmark'] = $benchmark->getElapsedTime('time', 4);
 $assign['version'] = $version;
-$assign['modals'] = safe_module_modal();
 //[print]---------------------------------------------------------------------------------------------------------------
-$template = view("App\Views\Themes\Beta\index", $assign);
+$template = view("App\Views\Themes\Gamma\index", $assign);
 echo($template);
 ?>

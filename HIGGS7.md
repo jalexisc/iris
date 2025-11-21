@@ -1,5 +1,8 @@
 # Guía Completa de Módulos en Higgs7
 
+> [!NOTE]
+> Para consultar la documentación oficial completa sobre el uso de Higgs7 y sus componentes, por favor visite: [https://codehiggs.com/](https://codehiggs.com/)
+
 ## ¿Qué es un Módulo en Higgs7?
 
 Un módulo es esencialmente un paquete autocontenido que puede incluir controladores, modelos, vistas, configuraciones, rutas, y otros recursos. Los módulos permiten encapsular funcionalidades específicas y hacerlas portátiles entre diferentes aplicaciones.
